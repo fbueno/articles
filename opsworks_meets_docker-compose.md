@@ -1,14 +1,14 @@
 ﻿I found AWS OpsWorks when I was looking for a way to orchestrate the applications containers that I had just created. At that moment I was using shell script and puppet. 
 
-Just after starting using OpsWorks, I realised it should be my key tool for containerisation because of its features, like auto-healing to EC2 instances, auto-scale, and time-based EC2 instances. Of course there are there are other solutions available out there, and I'm still trying them, and I have to say that I kind of tending to kubernetes or deis.
+Just after starting using OpsWorks, I realised it should be my key tool for containerisation because of its features, like auto-healing to EC2 instances, auto-scale, and time-based EC2 instances. Of course there are other solutions available out there, and I'm still trying them, and I have to say that I’m kind of tending to kubernetes or deis.
 
-Anyway, I thought that I could use the custom json OpsWorks feature to translate the docker-compose.yml that our developers already use to, tell the docker hosts which container images they should run and how.
+Anyway, I thought that I could use the custom json OpsWorks feature to translate the docker-compose.yml that our developers already use to tell the docker hosts which container images they should run and how.
 
-OpsWorks is a tool that makes it easy to provision and management of hosts (EC2 instances) and integrate them with EC2 ELBs for instance. Basically you create application stacks that have application layers (instances, load balancers, RDSs…) and configure them using custom chef cookbooks. You can also provide a "custom JSON" on stack creation time that will be passed to chef. 
+OpsWorks is a tool that makes it easy to provision and manage hosts (EC2 instances) and integrate them with EC2 ELBs for instance. Basically, you create application stacks that have application layers (instances, load balancers, RDSs…) and configure them using custom chef cookbooks. You can also provide a "custom JSON" on stack creation time that will be passed to chef. 
 
 The custom JSON is the key feature here, as it can be used to to configure, tag and set properties of EC2 instances that will run chef recipes.
 
-Some the things I did (with the contribution of [@tnache](https://bitbucket.org/tnache/opsworks-recipes)) were: 
+Some of the things I did (with the contribution of [@tnache](https://bitbucket.org/tnache/opsworks-recipes)) were: 
 
 >- Change the EC2 instances tags on boot time
 >- Update a specific Route53 IN A entry based on the current public ip of an EC2 instance
@@ -64,7 +64,7 @@ Easy....
 
 So, the idea here is to have the YAML translated to JSON so we can use
 it inside the custom JSON field on the OpsWorks Stack's creation,
-allowing to the json to be passed to chef.
+allowing the json to be passed to chef.
 
 Of course that docker-compose as I said uses yaml files, so we would
 have to translate it from json back to yaml using chef, and it is pretty
@@ -177,7 +177,7 @@ be like this:
 }
 ```
 
-With the json above, we would have that every single EC2 Instance  on
+With the json above, every single EC2 Instance  on
 the OpsWorks Stack would run the container postfix, and only the EC2 Instances on the layer called 'djangoapp' would run the postgres, and
 the my-djangoapp images.
 
@@ -227,5 +227,5 @@ complete custom JSON on the OpsWorks Stack's would look like this:
 I will soon prepare a Youtube video describing step by step
 the process to get this working for those that have no OpsWorks and Chef knowledge. 
 
-Meanwhile, Thiago Nache making available the docker-compose recipes that
+Meanwhile, Thiago Nache is making available the docker-compose recipes that
 we wrote on [his bitbucket](https://bitbucket.org/tnache/opsworks-recipes). You can also can find a working fork on [mine](https://bitbucket.org/fbueno/opsworks-recipes).

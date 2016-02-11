@@ -24,7 +24,8 @@ yaml files can be easyly translated to json.
 
 So, things like this:
 
-```db:
+```
+db:
   image: postgres
 web:
   build: my-djangoapp

@@ -6,7 +6,7 @@ Anyway, I thought that I could use the custom json OpsWorks feature to translate
 
 OpsWorks is a tool that makes it easy to provision and manage hosts (EC2 instances) and integrate them with EC2 ELBs for instance. Basically, you create application stacks that have application layers (instances, load balancers, RDSs…) and configure them using custom chef cookbooks. You can also provide a "custom JSON" on stack creation time that will be passed to chef. 
 
-The custom JSON is the key feature here, as it can be used to to configure, tag and set properties of EC2 instances that will run chef recipes.
+The custom JSON is the key feature here, as it can be used to configure, tag and set properties of EC2 instances that will run chef recipes.
 
 Some of the things I did (with the contribution of [@tnache](https://bitbucket.org/tnache/opsworks-recipes)) were: 
 

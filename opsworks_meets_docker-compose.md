@@ -70,7 +70,7 @@ Of course that docker-compose as I said uses yaml files, so we would
 have to translate it from json back to yaml using chef, and it is pretty
 easy using chef templates.
 
-Because I would like to use the custom JSON to things other than simply
+Because I wanted to use the custom JSON to things other than simply
 write the docker-compose.yml, I decided to put the yaml translated to
 json inside a new json key. So the json would look like this:
 
